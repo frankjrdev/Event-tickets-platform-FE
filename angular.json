@@ -71,8 +71,9 @@
           "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular/build:karma",
+         "builder": "@angular-builders/jest:run",
           "options": {
+            "configPath": "./jest.config.ts",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
@@ -88,7 +89,13 @@
               "src/styles.css"
             ]
           }
-        }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "command": "playwright test"
+          }
+        }        
       }
     }
   }
